@@ -7,7 +7,7 @@ const App: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('/api/hello');
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/hello`);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.text();
       setResponse(data);
