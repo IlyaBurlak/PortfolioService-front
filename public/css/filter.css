@@ -1,0 +1,57 @@
+@import "variables.css";
+
+
+.menu-items{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    max-width: 310px;
+    margin:  50px auto;
+    border: 2px dashed var(--accent);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.menu-item{
+    margin: 0 20px;
+}
+
+
+.filter {
+    margin: 5px 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.all{
+    border: 3px solid var(--accent);
+}
+
+.lite{
+    background-color: var(--lite);
+    color: var(--black);
+    margin-left: 20px;
+
+}
+
+.medium{
+    background-color: var(--medium);
+    color: var(--black);
+    margin-left: 20px;
+}
+
+.hard{
+    background-color:var(--hard);
+    color: var(--black);
+    margin-left: 20px;
+}
+
+.menu-item.lite{
+    margin-left: 10px;
+}
+.menu-item.medium{
+    margin-left: 10px;
+}
+.menu-item.hard{
+    margin-left: 10px;
+}

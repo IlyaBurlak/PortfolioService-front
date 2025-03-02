@@ -1,0 +1,67 @@
+@import "./variables.css";
+
+/*Tags*/
+
+.tags{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+
+}
+
+.tag{
+    cursor: pointer;
+    font-size: 20px;
+    background-color: coral;
+    border: 1px solid var(--dark-border);
+    border-radius: 20px ;
+    padding: 7px;
+    margin:7px 7px;
+    max-height: 50px;
+    width: 110px;
+
+    transition: transform 0.2s, box-shadow 0.2s;
+
+}
+
+.tag:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.vanillaJs{
+    background-color: #E0C800;
+    color: black;
+}
+.typeScript{
+    background-color: #3178C6;
+    border: 1px solid #007ACC;
+}
+
+.bootstrap{
+    background: linear-gradient(to bottom right, #7952B3, #673ab7);
+    color: white;
+}
+
+.vite {
+    background: linear-gradient(to bottom right, #646CFF, #3C4296);
+}
+
+.html{
+    background-color: #E34F26;
+}
+
+.css{
+    background-color: #1572B6;
+}
+
+.react{
+    background-color: #61DAFB;
+    color: var(--black);
+}
+
+.api{
+    background-color: var(--api-color);
+    color: black;
+}

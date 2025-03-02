@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+    --blackpure: #000;
+    --black: #171718;
+    --black-border: #26292D;
+    --white: #fff;
+    --purple: #5C62EC;
+
+    /*color for tags */
+
+    --js-color: #E0C800;
+    --react-color: #61DAFB ;
+    --tp-color: #3178C6 ;
+    --vite-color: ;
+    --api-color: mediumturquoise;
+    --css-color: #1572B6;
+    --html-color: #E34F26;
+
+    /*color for filter*/
+
+    --lite: #90EE90;
+    --medium: #FFA500;
+    --hard: #DC143C;
+
+    --text-color: var(--black);
+
+    --dark-bg: var(--black);
+    --dark-border: var(--black-border);
+    --header-text: var(--white);
+    --accent: var(--purple);
+
+    /* Light mode */
+    --page-bg: var(--white);
+    --title-1: var(--accent);
+
+    --project-card-bg: var(--white);
+    --project-card-text: var(--black);
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.dark {
+    /* Dark mode */
+    --page-bg: #252526;
+    --text-color: var(--white);
+
+    --title-1: var(--accent);
+
+    --project-card-bg: var(--black);
+    --project-card-text: var(--white);
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
+}
