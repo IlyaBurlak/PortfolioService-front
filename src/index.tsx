@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Home';
+import SkillsPage from './pages/Skills';
+import ContactsPage from './pages/Contacts';
 
 ReactDOM.render(
     <React.StrictMode>
-        <HomePage />
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/skills" element={<SkillsPage />} />
+                <Route path="/contacts" element={<ContactsPage />} />
+            </Routes>
+        </Router>
     </React.StrictMode>,
     document.getElementById('root')
 );

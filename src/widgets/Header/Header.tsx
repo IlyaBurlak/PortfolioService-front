@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode, isDarkMode }) => {
             <nav className="nav">
                 <div className="container">
                     <div className="nav-row">
-                        <a href="./index.html" className="logo"><strong>My</strong> portfolio</a>
+                        <a href="/index" className="logo"><strong>My</strong> portfolio</a>
                         <NavList />
                         <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
