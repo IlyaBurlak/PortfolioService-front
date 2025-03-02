@@ -5,20 +5,24 @@ import Preview from "../../shared/ui/Preview";
 
 interface HeaderProps {
     toggleDarkMode: () => void;
+    isDarkMode: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
+const Header: React.FC<HeaderProps> = ({ toggleDarkMode, isDarkMode }) => {
     return (
-        <nav className="nav">
-            <div className="container">
-                <div className="nav-row">
-                    <a href="./index.html" className="logo"><strong>My</strong> portfolio</a>
-                    <DarkModeToggle toggleDarkMode={toggleDarkMode} />
-                    <NavList />
+        <>
+            <nav className="nav">
+                <div className="container">
+                    <div className="nav-row">
+                        <a href="./index.html" className="logo"><strong>My</strong> portfolio</a>
+                        <NavList />
+                        <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+
+                    </div>
                 </div>
-                <Preview/>
-            </div>
-        </nav>
+            </nav>
+            <Preview />
+        </>
     );
 };
 

@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
 
     return (
         <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
-            <Header toggleDarkMode={toggleDarkMode} />
+            <Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
             <main className="section">
                 <div className="container">
                     <h2 className="title-1">Projects</h2>
