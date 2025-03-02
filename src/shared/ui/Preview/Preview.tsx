@@ -1,6 +1,9 @@
 import React from 'react';
+import useDownloadCV from '../../hooks/useDownloadCV';
 
 const Preview: React.FC = () => {
+    const { downloadCV } = useDownloadCV();
+
     return (
         <header className="header">
             <div className="header__wrapper">
@@ -11,7 +14,7 @@ const Preview: React.FC = () => {
                 <div className="header__text">
                     <p>with passion for learning and creating.</p>
                 </div>
-                <a id='CV-btn' className="btn">Download CV</a>
+                <button id='CV-btn' className="btn" onClick={downloadCV}>Download CV</button>
             </div>
         </header>
     );
