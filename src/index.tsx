@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Home';
 import SkillsPage from './pages/Skills';
 import ContactsPage from './pages/Contacts';
+import CommentsPage from "./pages/Comments";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -12,8 +13,10 @@ ReactDOM.render(
                 <Route path="/" element={<HomePage />} />
                 <Route path="/skills" element={<SkillsPage />} />
                 <Route path="/contacts" element={<ContactsPage />} />
+                <Route path="/comment" element={<CommentsPage />} />
             </Routes>
         </Router>
     </React.StrictMode>,
     document.getElementById('root')
+
 );

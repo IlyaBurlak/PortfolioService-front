@@ -1,13 +1,24 @@
-@import "./reset.css";
-@import "./variables.css";
-@import "./media.css";
-@import "./general.css";
-@import "./nav.css";
-@import "./header.css";
-@import "./button.css";
-@import "./project.css";
-@import "./content.css";
-@import "./footer.css";
-@import "./tag.css";
-@import "./skills.css";
-@import "filter.css";
+
+@import "./base/reset.css";
+@import "./base/variables.css";
+@import "./base/base.css";
+
+@import "./components/buttons.css";
+@import "./components/nav.css";
+@import "./components/dark-mode.css";
+@import "./components/project-cards.css";
+@import "./components/tables.css";
+@import "./components/comments.css";
+@import "./components/preloader.css";
+@import "./components/tag.css";
+@import "./components/filter.css";
+
+
+
+@import "./layout/header.css";
+@import "./layout/footer.css";
+@import "./layout/sections.css";
+
+@media (max-width: 620px) {
+    @import "./layout/media-queries.css";
+}

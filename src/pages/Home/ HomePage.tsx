@@ -4,14 +4,16 @@ import Footer from '../../widgets/Footer/Footer';
 import ProjectsList from '../../entities/Project/ui/ProjectsList';
 import useDarkMode from '../../features/dark-mode-toggle/useDarkMode';
 import useProjectsFilter from '../../features/projects-filter/useProjectsFilter';
+import Preview from "../../shared/ui/Preview";
 
 const HomePage: React.FC = () => {
     const { isDarkMode, toggleDarkMode } = useDarkMode();
     const { filteredProjects, filterProjects } = useProjectsFilter();
 
     return (
-        <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
+        <>
             <Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+            <Preview/>
             <main className="section">
                 <div className="container">
                     <h2 className="title-1">Projects</h2>
@@ -27,7 +29,7 @@ const HomePage: React.FC = () => {
                 </div>
             </main>
             <Footer />
-        </div>
+        </>
     );
 };
 

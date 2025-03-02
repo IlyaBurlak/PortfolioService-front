@@ -13,8 +13,13 @@ const NavList: React.FC = () => {
             <li className="nav-list__item">
                 <Link to="/contacts" className="nav-list__link">Contacts</Link>
             </li>
+            <li className="nav-list__item">
+                <Link to="/comment" className="nav-list__link">Comments</Link>
+            </li>
         </ul>
     );
 };
 
 export default NavList;
+
+

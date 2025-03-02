@@ -1,51 +1,32 @@
-
-/* Btn */
-
 .btn {
     display: inline-block;
     height: 48px;
     padding: 12px 28px;
-
+    margin: 0 10px;
     border-radius: 5px;
     background-color: var(--accent);
     color: var(--white);
     letter-spacing: 0.15px;
     font-size: 16px;
     font-weight: 500;
-
     transition: opacity 0.2s ease-in;
 }
 
-.btn:hover {
-    opacity: 0.8;
-}
-
-.btn:active {
-    position: relative;
-    top: 1px;
-}
-
-/* Btn outline */
+.btn:hover { opacity: 0.8; }
+.btn:active { position: relative; top: 1px; }
 
 .btn-outline {
     display: flex;
     column-gap: 10px;
     align-items: center;
-
     height: 48px;
     padding: 12px 20px;
     margin: 2px;
-
     border-radius: 5px;
     border: 1px solid var(--blackpure);
     background-color: var(--white);
     color: var(--blackpure);
-
     transition: opacity 0.2s ease-in;
-}
-.go-to-page{
-    width: 24px;
-    height: 24px;
 }
 
 .btn-outline:hover {
@@ -56,3 +37,21 @@
     position: relative;
     top: 1px;
 }
+
+.go-to-page {
+    width: 24px;
+    height: 24px;
+}
+
+#clear-local-storage-btn {
+    background-color: red;
+    color: white;
+}
+
+#load-button, #submit-button, #clear-local-storage-btn {
+    width: 240px;
+    margin: 5px 15px 0 0;
+
+}
+
+.ment-form_buttons { display: flex; flex-direction: column; }

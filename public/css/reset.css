@@ -1,24 +1,24 @@
 /* Reset and base styles  */
 * {
-    padding: 0px;
-    margin: 0px;
-    border: none;
+	padding: 0px;
+	margin: 0px;
+	border: none;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :focus,
 :active {
-    /*outline: none;*/
+	/*outline: none;*/
 }
 
 a:focus,
 a:active {
-    /* outline: none;*/
+	/* outline: none;*/
 }
 
 /* Links */
@@ -37,42 +37,42 @@ a:hover  {
 /* Common */
 
 aside, nav, footer, header, section, main {
-    display: block;
+	display: block;
 }
 
 h1, h2, h3, h4, h5, h6, p {
     font-size: inherit;
-    font-weight: inherit;
+	font-weight: inherit;
 }
 
 ul, ul li {
-    list-style: none;
+	list-style: none;
 }
 
 img {
-    vertical-align: top;
+	vertical-align: top;
 }
 
 img, svg {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 address {
-    font-style: normal;
+  font-style: normal;
 }
 
 /* Form */
 
 input, textarea, button, select {
-    font-family: inherit;
+	font-family: inherit;
     font-size: inherit;
     color: inherit;
     background-color: transparent;
 }
 
 input::-ms-clear {
-    display: none;
+	display: none;
 }
 
 button, input[type="submit"] {
@@ -89,14 +89,14 @@ button:focus, button:active {
 }
 
 button::-moz-focus-inner {
-    padding: 0;
-    border: 0;
+	padding: 0;
+	border: 0;
 }
 
 label {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 legend {
-    display: block;
+	display: block;
 }

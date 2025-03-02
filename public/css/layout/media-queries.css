@@ -1,0 +1,30 @@
+@media (max-width: 620px) {
+    .header { min-height: unset; }
+    .header__title { font-size: 30px; }
+    .header__title strong { font-size: 40px; }
+
+    .nav-row { justify-content: space-between; }
+    .dark-mode-btn { order: 0; }
+
+    .section { padding: 40px 0; }
+    .title-1 { margin-bottom: 30px; font-size: 40px; }
+    .title-2 { margin-bottom: 10px; font-size: 30px; }
+
+    .project__title { font-size: 22px; }
+
+    .project-details__desc {
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    .content-list { row-gap: 20px; }
+    .content-list__item { font-size: 16px; }
+
+    .footer { padding: 40px 0 30px; }
+    .footer__wrapper { row-gap: 20px; }
+
+    .social { column-gap: 20px; }
+    .social__item { width: 28px; }
+    #load-button { margin-top: 10px; }
+}
+

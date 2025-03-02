@@ -1,0 +1,53 @@
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-group { display: flex; margin: 2px; }
+
+.form-comment-header {
+    color: var(--accent);
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+
+#nameC, #surname, #telegram, #comment {
+    margin-left: 10px;
+    border: 3px solid var(--accent);
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+.comments-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.comment {
+    margin: 10px;
+    padding: 5px;
+    max-width:330px;
+    border: 3px solid var(--accent);
+    border-radius: 10px;
+}
+
+.comment h3 { color: var(--accent); font-size: larger; }
+.comment a { color: lightseagreen; }
+.comment p { margin-top: 0.5rem; }
+
+.comment__delete-btn {
+    display: flex;
+    border: 1px solid indianred;
+    border-radius: 5px;
+    background-color: rgb(202, 71, 52);
+    color: white;
+    padding: 3px;
+    margin: 2px;
+}
+
+.comment__delete-btn:hover { opacity: 0.8; }
+.comment-form { caret-color: var(--accent); }
