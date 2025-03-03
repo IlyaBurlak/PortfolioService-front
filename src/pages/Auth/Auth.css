@@ -1,0 +1,128 @@
+.login-page {
+    min-height: 100vh;
+    background: var(--page-bg);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--project-card-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+}
+
+.auth-container h2 {
+    color: var(--title-1);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--black-border);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: var(--page-bg);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-group input::placeholder {
+    color: var(--black-border);
+    opacity: 0.7;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent);
+    color: var(--header-text);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #4a50c7;
+    transform: translateY(-2px);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-color);
+}
+
+.auth-link a {
+    color: var(--accent);
+    margin-left: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: var(--hard);
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    color: var(--lite);
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.error-border {
+    border-color: var(--hard);
+}
+
+.success-border {
+    border-color:var(--lite) ;
+}
+
+
+@media (max-width: 480px) {
+    .login-page {
+        padding: 10px;
+    }
+
+    .auth-container {
+        padding: 1.5rem;
+    }
+}
