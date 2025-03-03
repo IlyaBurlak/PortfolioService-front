@@ -6,6 +6,8 @@ import SkillsPage from './pages/Skills';
 import ContactsPage from './pages/Contacts';
 import CommentsPage from "./pages/Comments";
 import NotFoundPage from "./pages/NotFound";
+import LogInPage from "./pages/Auth/LogInPage";
+import RegistrationPage from "./pages/Auth/RegistrationPage";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -16,6 +18,9 @@ ReactDOM.render(
                 <Route path="/contacts" element={<ContactsPage />} />
                 <Route path="/comment" element={<CommentsPage />} />
                 <Route path="*" element={<NotFoundPage />} />
+                <Route path="auth/login" element={<LogInPage/>} />
+                <Route path="auth/register" element={<RegistrationPage/>} />
+
             </Routes>
         </Router>
     </React.StrictMode>,
