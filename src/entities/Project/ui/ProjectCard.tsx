@@ -4,12 +4,13 @@ interface ProjectCardProps {
     title: string;
     image: string;
     filter: string;
+    link: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, image, filter }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, image, filter , link}) => {
     return (
         <li className="project">
-            <a href={`html/projects/${title.toLowerCase().replace(/ /g, '-')}.html`}>
+            <a href={link}>
                 <img src={image} alt="Project img" className="project__img" />
                 <h3 className="project__title">{title}</h3>
                 <button className={`filter ${filter}`}>{filter}</button>
