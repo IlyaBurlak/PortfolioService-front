@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Добавляем импорт Link
 
 interface ProjectCardProps {
     title: string;
@@ -7,14 +8,14 @@ interface ProjectCardProps {
     link: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, image, filter , link}) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, image, filter, link }) => {
     return (
         <li className="project">
-            <a href={link}>
+            <Link to={`/project/${link.split('/')[1]}`}>
                 <img src={image} alt="Project img" className="project__img" />
                 <h3 className="project__title">{title}</h3>
                 <button className={`filter ${filter}`}>{filter}</button>
-            </a>
+            </Link>
         </li>
     );
 };

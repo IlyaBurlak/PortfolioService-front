@@ -1,5 +1,5 @@
 import React from 'react';
-import useDownloadCV from '../../hooks/useDownloadCV';
+import useDownloadCV from '../../shared/hooks/useDownloadCV';
 
 const Preview: React.FC = () => {
     const { downloadCV } = useDownloadCV();

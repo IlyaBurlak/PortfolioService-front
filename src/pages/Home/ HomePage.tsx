@@ -4,7 +4,7 @@ import Footer from '../../widgets/Footer/Footer';
 import ProjectsList from '../../entities/Project/ui/ProjectsList';
 import useDarkMode from '../../features/dark-mode-toggle/useDarkMode';
 import useProjectsFilter from '../../features/projects-filter/useProjectsFilter';
-import Preview from "../../shared/ui/Preview";
+import Preview from "../../widgets/Preview";
 
 const HomePage: React.FC = () => {
     const { isDarkMode, toggleDarkMode } = useDarkMode();
