@@ -10,25 +10,29 @@ interface ProjectContentProps {
 
 const ProjectContent: React.FC<ProjectContentProps> = ({ title, imageBig, tags, github, linkOnDeploy }) => {
     return (
-        <div className="project-details">
-            <h1 className="title-1">{title}</h1>
+        <main className="section">
+            <div className="container">
+                <div className="project-details">
+                    <h1 className="title-1">{title}</h1>
 
-            <img src={imageBig} alt={title} className="project-details__cover" />
+                    <img src={imageBig} alt={title} className="project-details__cover"/>
 
-            <div className="project-details__desc">
-                <p>Skills: {tags.join(", ")}</p>
+                    <div className="project-details__desc">
+                        <p>Skills: {tags.join(", ")}</p>
+                    </div>
+
+                    <a href={github} className="btn-outline" target="_blank" rel="noopener noreferrer">
+                        <img src="../img/icons/gitHub-black.svg" alt="GitHub"/>
+                        GitHub
+                    </a>
+
+                    <a href={linkOnDeploy} className="btn-outline" target="_blank" rel="noopener noreferrer">
+                        <img src="../img/icons/world-wide-web.png" alt="Go to page" className="go-to-page"/>
+                        Go to page
+                    </a>
+                </div>
             </div>
-
-            <a href={github} className="btn-outline" target="_blank" rel="noopener noreferrer">
-                <img src="../img/icons/gitHub-black.svg" alt="GitHub" />
-                GitHub
-            </a>
-
-            <a href={linkOnDeploy} className="btn-outline" target="_blank" rel="noopener noreferrer">
-                <img src="../img/icons/world-wide-web.png" alt="Go to page" className="go-to-page" />
-                Go to page
-            </a>
-        </div>
+        </main>
     );
 };
 
