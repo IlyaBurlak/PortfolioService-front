@@ -5,6 +5,7 @@ import HomePage from './pages/Home';
 import SkillsPage from './pages/Skills';
 import ContactsPage from './pages/Contacts';
 import CommentsPage from "./pages/Comments";
+import NotFoundPage from "./pages/NotFound";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
                 <Route path="/skills" element={<SkillsPage />} />
                 <Route path="/contacts" element={<ContactsPage />} />
                 <Route path="/comment" element={<CommentsPage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Router>
     </React.StrictMode>,
