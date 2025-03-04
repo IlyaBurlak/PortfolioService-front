@@ -22,8 +22,10 @@ const RegistrationPage: React.FC = () => {
         }
 
         try {
-            await axios.post('/auth/register', { email, password, name, surname });
-            setSuccess(true);
+            await axios.post(
+                `${process.env.REACT_APP_API_URL}/auth/register`,
+                { email, password, name, surname }
+            );            setSuccess(true);
             setTimeout(() => navigate('/auth/login'), 2000);
         } catch (err) {
             setError('Registration error');

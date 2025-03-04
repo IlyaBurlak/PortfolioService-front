@@ -14,8 +14,10 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/auth/login', { email, password });
-            login(response.data.token);
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/auth/login`,
+                { email, password }
+            );            login(response.data.token);
             navigate('/');
         } catch (err) {
             setError('Login error');
