@@ -17,10 +17,24 @@ const Login: React.FC = () => {
             const response = await axios.post(
                 `${process.env.REACT_APP_API_URL}/auth/login`,
                 { email, password }
-            );            login(response.data.token);
+            );
+            login(response.data.token);
             navigate('/');
         } catch (err) {
             setError('Login error');
+        }
+    };
+
+    // NEW: Обработчик гостевого входа
+    const handleGuestLogin = async () => {
+        try {
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/auth/guest-login`
+            );
+            login(response.data.access_token);
+            navigate('/');
+        } catch (err) {
+            setError('Guest login error');
         }
     };
 
@@ -52,6 +66,17 @@ const Login: React.FC = () => {
                         />
                     </div>
                     <button type="submit" className="auth-button">Log In</button>
+
+                    <div className="guest-section">
+                        <button
+                            type="button"
+                            className="auth-button guest-button"
+                            onClick={handleGuestLogin}
+                        >
+                            Sign in as Guest
+                        </button>
+                    </div>
+
                     {error && <p className="error-message">{error}</p>}
 
                     <div className="auth-link">

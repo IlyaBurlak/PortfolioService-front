@@ -116,6 +116,22 @@
     border-color:var(--lite) ;
 }
 
+.guest-section {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.guest-button {
+    background-color: #6c757d;
+    margin-top: 10px;
+}
+
+.guest-button:hover {
+    background-color: #5a6268;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
