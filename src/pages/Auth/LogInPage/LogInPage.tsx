@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from "../../../context/AuthContext";
 import '../Auth.css';
 
+
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,26 +19,24 @@ const Login: React.FC = () => {
                 `${process.env.REACT_APP_API_URL}/auth/login`,
                 { email, password }
             );
-            login(response.data.token);
+            await login(response.data.access_token);
             navigate('/');
         } catch (err) {
-            setError('Login error');
+            setError('Invalid email or password');
         }
     };
 
-    // NEW: Обработчик гостевого входа
     const handleGuestLogin = async () => {
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_API_URL}/auth/guest-login`
             );
-            login(response.data.access_token);
+            await login(response.data.access_token);
             navigate('/');
         } catch (err) {
-            setError('Guest login error');
+            setError('Guest login failed');
         }
     };
-
     return (
         <div className="login-page">
             <div className="auth-container">
