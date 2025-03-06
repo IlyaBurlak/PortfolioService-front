@@ -1,43 +1,109 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import '../../pages/Comments/CommentContent.css';
+import { useAuth } from "../../context/AuthContext";
 
 const CommentContent: React.FC = () => {
+    const { isAuthenticated, user } = useAuth();
+    const [commentText, setCommentText] = useState("");
+    const [comments, setComments] = useState<any[]>([]);
+
+    useEffect(() => {
+        loadComments();
+    }, []);
+
+    const loadComments = async () => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/comments`);
+            console.log('Raw response:', response);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Received data:', data);
+
+            const receivedComments = Array.isArray(data) ? data : [];
+            setComments(receivedComments);
+        } catch (error) {
+            console.error("Error loading comments:", error);
+            setComments([]);
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!isAuthenticated || !commentText.trim()) return;
+
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/comments`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ comment: commentText }),
+            });
+
+            if (!response.ok) throw new Error("Failed to submit comment");
+            setCommentText("");
+            await loadComments();
+        } catch (error) {
+            console.error("Error submitting comment:", error);
+        }
+    };
+
     return (
         <main className="section">
             <div className="container">
                 <div className="form-comment">
-                    <h2 className="form-comment-header">Leave a Comment</h2>
-                    <form id="comment-form" className="comment-form">
-                        <div className="form-group">
-                            <label htmlFor="nameC">Name:</label>
-                            <input type="text" name="nameC" id="nameC" placeholder="Enter your name"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="surname">Surname:</label>
-                            <input type="text" name="surname" id="surname" placeholder="Enter your surname"/>
-                        </div>
-                        <div className="form-group">
-                            <label
-                                htmlFor="telegram">Telegram Tag:</label>
-                            <input type="text" name="telegram" id="telegram" placeholder="Enter your @username"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="comment">Your comment:</label>
-                            <input type="text" name="comment-text" id="comment" placeholder="Enter your comment"/>
-                        </div>
-                        <div className="comment-form_buttons">
-                            <button type="submit" className="btn btn-primary" id="submit-button">Submit Comment</button>
-                            <button type="button" className="btn btn-primary" id="load-button">Load Comment</button>
-                            <button className="btn btn-primary" id="clear-local-storage-btn">Очистить Local Storage
+                    {isAuthenticated ? (
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label></label>
+                                <textarea
+                                    value={commentText}
+                                    onChange={(e) => setCommentText(e.target.value)}
+                                    placeholder="Please leave your feedback"
+                                    required
+                                />
+                            </div>
+                            <button type="submit" className="btn btn-primary">
+                                Submit Comment
                             </button>
-                        </div>
-                    </form>
+                        </form>
+                    ) : (
+                        <p>Please log in to leave a comment</p>
+                    )}
                 </div>
                 <div className="comments-container">
-                    <div id="toast-container" className="fixed top-20 right-0 p-4 space-y-2 z-50"></div>
+                    {Array.isArray(comments) && comments.map((comment) => (
+                        <div key={comment.id} className="comment-card">
+                            <div className="comment-header">
+                                <div className="user-info">
+                                    <span className="user-name">
+                                        {comment.user?.name || 'Anonymous'} {comment.user?.surname || ''}
+                                    </span>
+                                    <span className="user-email">{comment.user?.email || 'No email'}</span>
+                                </div>
+                                <span className="comment-date">
+                                    {new Date(comment.createdAt).toLocaleDateString('en-GB', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}
+                                </span>
+                            </div>
+                            <p className="comment-text">{comment.comment}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default CommentContent;

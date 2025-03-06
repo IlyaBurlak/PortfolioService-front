@@ -46,7 +46,6 @@
     white-space: nowrap;
 }
 
-/* Стили для NavList остаются без изменений */
 .nav-list {
     display: flex;
     flex-wrap: wrap;
@@ -86,23 +85,7 @@
     }
 }
 
-/* Стили для кнопки выхода */
-.logout-button {
-    background: none;
-    border: none;
-    color: var(--header-text);
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 5px 10px;
-    transition: opacity 0.2s ease-in;
 
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
-/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .nav-row {
         justify-content: center;
