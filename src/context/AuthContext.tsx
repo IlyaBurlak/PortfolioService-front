@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 interface User {
     name: string;
     surname: string;
+    email: string;
+    createdAt: string;
 }
 
 interface AuthContextType {
@@ -30,7 +32,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             if (!response.ok) throw new Error('Failed to fetch user');
             const userData = await response.json();
-            setUser({ name: userData.name, surname: userData.surname });
+            setUser({
+                name: userData.name,
+                surname: userData.surname,
+                email: userData.email,
+                createdAt: userData.createdAt,
+            });
         } catch (error) {
             logout();
         }

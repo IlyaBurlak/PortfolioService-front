@@ -1,0 +1,49 @@
+/* Drawer.css */
+.ant-drawer-content {
+    background-color: var(--dark-bg) !important;
+}
+
+.ant-drawer-header {
+    background-color: var(--dark-bg) !important;
+    border-bottom: 1px solid var(--dark-border) !important;
+}
+
+.ant-drawer-title {
+    color: var(--header-text) !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 18px !important;
+}
+
+.ant-drawer-close {
+    color: var(--header-text) !important;
+}
+
+.ant-descriptions-item-label,
+.ant-descriptions-item-content {
+    color: var(--header-text) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.ant-descriptions-item-label {
+    font-weight: 500 !important;
+}
+
+.dark .ant-drawer-content {
+    background-color: var(--dark-bg) !important;
+}
+
+.light .ant-drawer-content {
+    background-color: #fff !important;
+}
+
+.ant-btn-primary {
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+    transition: opacity 0.2s ease-in !important;
+}
+
+.ant-btn-primary:hover {
+    opacity: 0.8 !important;
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
