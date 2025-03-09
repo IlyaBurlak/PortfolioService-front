@@ -1,49 +1,146 @@
-/* Drawer.css */
 .ant-drawer-content {
     background-color: var(--dark-bg) !important;
+    transition:
+            transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            background-color 0.3s ease !important;
 }
 
 .ant-drawer-header {
-    background-color: var(--dark-bg) !important;
-    border-bottom: 1px solid var(--dark-border) !important;
+    background: linear-gradient(135deg, var(--accent) 30%, var(--dark-bg)) !important;
+    border-bottom: none !important;
+    padding: 24px !important;
 }
 
 .ant-drawer-title {
     color: var(--header-text) !important;
     font-family: 'Poppins', sans-serif !important;
-    font-size: 18px !important;
+    font-size: 22px !important;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
 }
 
 .ant-drawer-close {
     color: var(--header-text) !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.ant-drawer-close:hover {
+    opacity: 0.8 !important;
+}
+
+.ant-drawer-body {
+    padding: 24px !important;
+    background: var(--page-bg) !important;
+    transition: background-color 0.3s ease !important;
+}
+
+/* ===== Стили контента ===== */
+.ant-descriptions-view {
+    background: var(--project-card-bg);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition:
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
+
+    margin-bottom: 10px;
+}
+
+/* Строки с выравниванием */
+.ant-descriptions-row {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 8px 0;
 }
 
 .ant-descriptions-item-label,
 .ant-descriptions-item-content {
-    color: var(--header-text) !important;
-    font-family: 'Poppins', sans-serif !important;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 16px !important;
 }
 
 .ant-descriptions-item-label {
-    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+
+    width: 140px;
+    min-width: 140px;
+    padding: 8px 16px !important;
+
+    background: rgba(var(--accent-rgb), 0.08) !important;
+    border-right: 2px solid var(--dark-border);
+
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 15px;
+    color: var(--header-text) !important;
 }
+
+.ant-descriptions-item-content {
+    color: var(--text-color) !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500;
+    font-size: 15px;
+    width: 65%;
+    position: relative;
+    background: rgba(var(--accent-rgb), 0.03);
+}
+
+/* Разделители */
+.ant-descriptions-item-content::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--dark-border);
+    opacity: 0.15;
+}
+
+.ant-descriptions-item:last-child .ant-descriptions-item-content::after {
+    display: none;
+}
+
+/* Иконки */
+.ant-descriptions-item-label .anticon {
+    color: var(--accent);
+    font-size: 16px;
+    margin-right: 12px;
+    margin-top: 0;
+}
+
+/* ===== Анимации ===== */
+@keyframes item-appear {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ant-descriptions-item {
+    animation: item-appear 0.4s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+.ant-descriptions-item:nth-child(1) { animation-delay: 0.1s; }
+.ant-descriptions-item:nth-child(2) { animation-delay: 0.2s; }
+.ant-descriptions-item:nth-child(3) { animation-delay: 0.3s; }
+
 
 .dark .ant-drawer-content {
     background-color: var(--dark-bg) !important;
 }
 
-.light .ant-drawer-content {
-    background-color: #fff !important;
-}
-
-.ant-btn-primary {
-    background-color: var(--accent) !important;
-    border-color: var(--accent) !important;
-    transition: opacity 0.2s ease-in !important;
-}
-
-.ant-btn-primary:hover {
-    opacity: 0.8 !important;
-    background-color: var(--accent) !important;
-    border-color: var(--accent) !important;
+.light .ant-descriptions-item-label {
+    background: rgba(var(--accent-rgb), 0.05) !important;
 }

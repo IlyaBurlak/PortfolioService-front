@@ -89,12 +89,7 @@
     }
 }
 
-.log-out{
-    background-color: var(--accent);
-    padding: 10px;
-    margin: 0;
 
-}
 
 @media (max-width: 923px) {
     .nav-list {

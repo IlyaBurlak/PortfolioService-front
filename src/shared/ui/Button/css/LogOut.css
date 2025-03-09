@@ -1,0 +1,8 @@
+.log-out{
+    color: var(--white);
+    background-color: var(--hard);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+
+}

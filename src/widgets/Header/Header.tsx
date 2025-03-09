@@ -5,7 +5,8 @@ import { Avatar, Drawer, Button, Space, Descriptions } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import DarkModeToggle from '../ DarkModeToggle';
 import NavList from '../../shared/ui/NavList/NavList';
-import LogoutButton from '../../shared/ui/Button/LogoutButton';
+import LogoutButton from '../../shared/ui/Button/LogOut/LogoutButton';
+import { MailOutlined, CalendarOutlined } from '@ant-design/icons';
 import './Header.css';
 
 interface HeaderProps {
@@ -67,11 +68,14 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode, isDarkMode }) => {
             >
                 {user && (
                     <Descriptions column={1}>
-                        <Descriptions.Item label="Name">{user.name}</Descriptions.Item>
-                        <Descriptions.Item label="Surname">{user.surname}</Descriptions.Item>
-                        <Descriptions.Item label="Email">{user.email}</Descriptions.Item>
-                        <Descriptions.Item label="Created At">
-                            {new Date(user.createdAt).toLocaleDateString()}
+                        <Descriptions.Item label={<><UserOutlined /> Name</>}>
+                            <div className="user-info-value">{user.name}</div>
+                        </Descriptions.Item>
+                        <Descriptions.Item label={<><UserOutlined /> Surname</>}>
+                            <div className="user-info-value">{user.surname}</div>
+                        </Descriptions.Item>
+                        <Descriptions.Item label={<><MailOutlined /> Email</>}>
+                            <div className="user-info-value">{user.email}</div>
                         </Descriptions.Item>
                     </Descriptions>
                 )}
