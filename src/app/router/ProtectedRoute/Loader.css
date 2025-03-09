@@ -1,0 +1,35 @@
+.pulse-loader {
+    animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(92, 98, 236, 0.3);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(92, 98, 236, 0.5);
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+}
+
+.loading-text {
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    animation: text-fade 2s ease-in-out infinite;
+}
+
+@keyframes text-fade {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
