@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "antd": "^5.24.3",
     "axios": "^1.8.1",
