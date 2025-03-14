@@ -8,6 +8,7 @@ import NavList from '../../shared/ui/NavList/NavList';
 import LogoutButton from '../../shared/ui/Button/LogOut/LogoutButton';
 import { MailOutlined, CalendarOutlined } from '@ant-design/icons';
 import './Header.css';
+import DeleteAccountButton from "../../shared/ui/Button/DeleteUser";
 
 interface HeaderProps {
     toggleDarkMode: () => void;
@@ -80,6 +81,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode, isDarkMode }) => {
                     </Descriptions>
                 )}
                 <LogoutButton />
+                <DeleteAccountButton/>
             </Drawer>
         </nav>
     );
