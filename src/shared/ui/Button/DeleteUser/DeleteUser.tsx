@@ -1,42 +1,31 @@
-import { Button, message } from "antd";
-import { useAuth } from "../../../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import '../css/DeleteAccount.css'
+import { Button, Modal } from 'antd';
+import { ExclamationCircleFilled } from '@ant-design/icons';
+import '../css/DeleteAccount.css';
+import useDeleteAccount from "../../../hooks/useDeleteAccount";
 
 const DeleteAccountButton = () => {
-    const { logout, user } = useAuth();
-    const navigate = useNavigate();
+    const { deleteAccount, loading } = useDeleteAccount();
+    const { confirm } = Modal;
 
-    const handleDeleteAccount = async () => {
-        if (!window.confirm("Are you sure you want to permanently delete your account? This action cannot be undone!")) {
-            return;
-        }
-
-        try {
-            await axios.delete(
-                `${process.env.REACT_APP_API_URL}/auth/delete`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                }
-            );
-
-            message.success('Account deleted successfully');
-            await logout();
-            navigate('/');
-        } catch (err) {
-            message.error('Failed to delete account');
-            console.error('Delete account error:', err);
-        }
+    const showConfirm = () => {
+        confirm({
+            title: 'Вы уверены, что хотите удалить аккаунт?',
+            icon: <ExclamationCircleFilled />,
+            content: 'Это действие невозможно отменить! Все данные будут удалены навсегда.',
+            okText: 'Удалить',
+            okType: 'danger',
+            cancelText: 'Отмена',
+            centered: true,
+            onOk: deleteAccount,
+        });
     };
 
     return (
         <Button
             danger
-            onClick={handleDeleteAccount}
-            className='delete-account-button'
+            onClick={showConfirm}
+            loading={loading}
+            className="delete-account-button"
         >
             Delete Account
         </Button>

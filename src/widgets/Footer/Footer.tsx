@@ -13,11 +13,6 @@ const Footer: React.FC = () => {
                         </li>
                         <li className="social__item">
                             <a href="#!">
-                                <img src="/img/icons/instagram.svg" alt="Instagram" />
-                            </a>
-                        </li>
-                        <li className="social__item">
-                            <a href="#!">
                                 <img src="/img/icons/twitter.svg" alt="Twitter" />
                             </a>
                         </li>
