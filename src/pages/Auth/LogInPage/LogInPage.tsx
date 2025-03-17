@@ -1,42 +1,19 @@
+// Login.tsx
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from "../../../context/AuthContext";
+import { Link } from 'react-router-dom';
 import '../Auth.css';
-
+import useLogin from "../../../shared/hooks/useLogin";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState<string | null>(null);
-    const { login } = useAuth();
-    const navigate = useNavigate();
+    const { handleLogin, handleGuestLogin, error } = useLogin();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-            const response = await axios.post(
-                `${process.env.REACT_APP_API_URL}/auth/login`,
-                { email, password }
-            );
-            await login(response.data.access_token);
-            navigate('/');
-        } catch (err) {
-            setError('Invalid email or password');
-        }
+        await handleLogin(email, password);
     };
 
-    const handleGuestLogin = async () => {
-        try {
-            const response = await axios.post(
-                `${process.env.REACT_APP_API_URL}/auth/guest-login`
-            );
-            await login(response.data.access_token);
-            navigate('/');
-        } catch (err) {
-            setError('Guest login failed');
-        }
-    };
     return (
         <div className="login-page">
             <div className="auth-container">

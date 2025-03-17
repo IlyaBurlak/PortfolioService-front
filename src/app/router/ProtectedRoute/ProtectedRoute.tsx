@@ -1,19 +1,7 @@
 import { Row, Col } from 'antd';
-import './Loader.css';
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
-
-const PulseLoader = () => (
-    <div
-        className="pulse-loader"
-        style={{
-            width: 64,
-            height: 64,
-            borderRadius: '50%',
-            background: `radial-gradient(circle, var(--accent) 60%, transparent 70%)`
-        }}
-    />
-);
+import {Loader} from "../../../shared/ui/Loader/Loader";
 
 const ProtectedRoute = () => {
     const { isAuthenticated, isLoading } = useAuth();
@@ -30,10 +18,7 @@ const ProtectedRoute = () => {
                 }}
             >
                 <Col>
-                    <PulseLoader />
-                    <div className="loading-text">
-                        Загрузка...
-                    </div>
+                    <Loader text="Проверка авторизации..." />
                 </Col>
             </Row>
         );

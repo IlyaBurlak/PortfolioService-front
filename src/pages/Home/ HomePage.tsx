@@ -6,9 +6,12 @@ import useDarkMode from '../../features/dark-mode-toggle/useDarkMode';
 import useProjectsFilter from '../../features/projects-filter/useProjectsFilter';
 import Preview from "../../widgets/Preview";
 
+import './HomePage.css'
+import {Loader} from "../../shared/ui/Loader/Loader";
+
 const HomePage: React.FC = () => {
     const { isDarkMode, toggleDarkMode } = useDarkMode();
-    const { filteredProjects, filterProjects } = useProjectsFilter();
+    const { filteredProjects, filterProjects, loading, error } = useProjectsFilter();
 
     return (
         <>
@@ -25,7 +28,15 @@ const HomePage: React.FC = () => {
                             <button className="menu-item filter hard" onClick={() => filterProjects('hard')}>Hard</button>
                         </div>
                     </nav>
-                    <ProjectsList projects={filteredProjects} />
+
+
+                    {loading && (
+                        <div className="loading-wrapper">
+                            {loading && <Loader text="Загрузка проектов..." />}
+                        </div>
+                    )}
+                    {error && <div className="error">{error}</div>}
+                    {!loading && !error && <ProjectsList projects={filteredProjects} />}
                 </div>
             </main>
             <Footer />

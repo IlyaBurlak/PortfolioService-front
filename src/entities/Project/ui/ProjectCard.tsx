@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Добавляем импорт Link
+import { Link } from 'react-router-dom';
 
 interface ProjectCardProps {
     title: string;
