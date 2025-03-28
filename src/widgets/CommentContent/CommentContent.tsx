@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import '../../pages/Comments/CommentContent.css';
 import { useAuth } from '../../context/AuthContext';
 import useComments from "../../shared/hooks/useComments";
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from "react-toastify";
 
 const CommentContent: React.FC = () => {
     const { isAuthenticated } = useAuth();
@@ -27,6 +29,7 @@ const CommentContent: React.FC = () => {
     return (
         <main className="section">
             <div className="container">
+                <ToastContainer />
                 <div className="form-comment">
                     {isAuthenticated ? (
                         <form onSubmit={handleSubmit}>

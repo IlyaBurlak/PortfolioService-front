@@ -1,5 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import {toast} from "react-toastify";
 
 const useComments = () => {
     const { isAuthenticated } = useAuth();
@@ -7,6 +8,34 @@ const useComments = () => {
     const [comments, setComments] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const eventSource = new EventSource(`${process.env.REACT_APP_API_URL}/comments/sse`);
+
+        eventSource.onopen = () => {
+            console.log('SSE connection opened');
+        };
+
+        eventSource.onmessage = (event) => {
+            console.log('Received SSE event:', event.data);
+            const newComment = JSON.parse(event.data);
+            setComments(prev => [newComment, ...prev]);
+            toast.success('New comment received!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+            });
+        };
+
+        eventSource.onerror = (error) => {
+            console.error('SSE connection error:', error);
+            eventSource.close();
+        };
+
+        return () => {
+            eventSource.close();
+        };
+    }, []);
 
     const loadComments = useCallback(async () => {
         try {
@@ -49,13 +78,12 @@ const useComments = () => {
             }
 
             setCommentText('');
-            await loadComments();
             setError(null);
         } catch (err) {
             console.error('Error submitting comment:', err);
             setError('Failed to submit comment');
         }
-    }, [isAuthenticated, commentText, loadComments]);
+    }, [isAuthenticated, commentText]);
 
     return {
         commentText,
