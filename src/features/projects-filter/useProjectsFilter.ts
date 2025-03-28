@@ -1,4 +1,3 @@
-// src/features/projects-filter/useProjectsFilter.ts
 import { useState, useEffect, useCallback } from 'react';
 import { fetchProjects } from './api';
 import {Project} from "../../entities/Project/ui/Project";

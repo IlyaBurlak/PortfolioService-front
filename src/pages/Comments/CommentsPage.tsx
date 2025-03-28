@@ -15,7 +15,6 @@ const ContactsPage: React.FC = () => {
             <Footer/>
         </>
     );
-
 };
 
 export default ContactsPage;
