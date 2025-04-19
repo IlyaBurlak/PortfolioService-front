@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface User {
+    id: number;
     name: string;
     surname: string;
     email: string;
+    isGuest: boolean;
     createdAt: string;
 }
 
@@ -11,8 +14,8 @@ interface AuthContextType {
     isAuthenticated: boolean;
     user: User | null;
     isLoading: boolean;
-    login: (token: string) => Promise<void>;
-    logout: () => void;
+    login: (accessToken: string, refreshToken: string) => Promise<void>;
+    logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -24,34 +27,35 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const fetchUserData = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/me`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
             });
 
-            if (!response.ok) throw new Error('Failed to fetch user');
-            const userData = await response.json();
             setUser({
-                name: userData.name,
-                surname: userData.surname,
-                email: userData.email,
-                createdAt: userData.createdAt,
+                id: response.data.id,
+                name: response.data.name,
+                surname: response.data.surname,
+                email: response.data.email,
+                isGuest: response.data.isGuest,
+                createdAt: response.data.createdAt,
             });
         } catch (error) {
-            logout();
+            await logout();
+            throw error;
         }
     };
 
     useEffect(() => {
         const checkAuth = async () => {
-            const token = localStorage.getItem('token');
-            if (token) {
+            const accessToken = localStorage.getItem('access_token');
+            if (accessToken) {
                 try {
                     await fetchUserData();
                     setIsAuthenticated(true);
                 } catch {
-                    logout();
+                    await logout();
                 }
             }
             setIsLoading(false);
@@ -59,21 +63,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         checkAuth();
     }, []);
 
-    const login = async (token: string) => {
-        localStorage.setItem('token', token);
+    const login = async (accessToken: string, refreshToken: string) => {
+        localStorage.setItem('access_token', accessToken);
+        localStorage.setItem('refresh_token', refreshToken);
         try {
             await fetchUserData();
             setIsAuthenticated(true);
         } catch (error) {
-            logout();
+            await logout();
             throw error;
         }
     };
 
-    const logout = () => {
-        localStorage.removeItem('token');
-        setIsAuthenticated(false);
-        setUser(null);
+    const logout = async () => {
+        try {
+            const refreshToken = localStorage.getItem('refresh_token');
+            if (refreshToken) {
+                await axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`, {
+                    refresh_token: refreshToken
+                });
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+        } finally {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            setIsAuthenticated(false);
+            setUser(null);
+        }
     };
 
     return (
